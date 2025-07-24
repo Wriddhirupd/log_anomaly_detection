@@ -1,0 +1,18 @@
+services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  llama-detector:
+    build: .
+    depends_on:
+      - redis
+    environment:
+      - LANGCHAIN_TRACING_V2=false
+      - REDIS_HOST=redis
+    volumes:
+      - .:/src
+    ports:
+      - "8000:8000"  # Expose LangGraph visual UI
+    command: ["python", "main.py"]
