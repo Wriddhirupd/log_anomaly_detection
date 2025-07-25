@@ -25,7 +25,7 @@ def generate_log():
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
     }
 
-for _ in range(10):
+for _ in range(20):
     log = generate_log()
     r.xadd("logs:incoming", log)
     print("[LogPusher] Inserted:", log)

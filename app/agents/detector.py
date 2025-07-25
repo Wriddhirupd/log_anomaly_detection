@@ -18,6 +18,8 @@ Example:
   "explanation": "why this log is or is not anomalous"
 }
 
+If there is any anomaly in the log line, alert the user with a clear explanation of the anomaly with tool call.
+
 Log:
 """
 

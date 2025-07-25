@@ -1,0 +1,62 @@
+[
+  {
+    "pattern": "user logged in",
+    "solution": "Login successful. No action required unless unusual login location or time is detected."
+  },
+  {
+    "pattern": "authentication failure",
+    "solution": "Check if credentials are correct. Investigate repeated failures for potential brute-force attacks."
+  },
+  {
+    "pattern": "sudo: .* incorrect password attempts",
+    "solution": "Investigate the user trying to gain root access. Review sudoers config and enforce MFA if possible."
+  },
+  {
+    "pattern": "connection refused",
+    "solution": "Check if the target service is running, firewall rules, and port bindings."
+  },
+  {
+    "pattern": "no space left on device",
+    "solution": "Clear unused logs, temp files, or rotate logs using logrotate. Check which directories are full using `du -sh`."
+  },
+  {
+    "pattern": "kernel: Out of memory",
+    "solution": "Identify high-memory processes using `top` or `htop`. Consider increasing RAM or tuning `vm.overcommit_memory`."
+  },
+  {
+    "pattern": "disk quota exceeded",
+    "solution": "Check user/group disk quotas using `repquota`. Clean up large files or raise quota limits."
+  },
+  {
+    "pattern": "nginx: 502 Bad Gateway",
+    "solution": "Check if upstream server is running. Restart backend services. Review nginx `proxy_pass` settings."
+  },
+  {
+    "pattern": "cron.*permission denied",
+    "solution": "Check cron file permissions and ownership. Make sure script has executable permissions and correct shebang."
+  },
+  {
+    "pattern": "fatal: unable to connect to github.com",
+    "solution": "Check internet connectivity, proxy config, and SSH or token access to GitHub. Try running `ssh -T git@github.com`."
+  },
+  {
+    "pattern": "segmentation fault",
+    "solution": "Enable core dumps. Debug with `gdb`. Check for memory issues or bad pointer dereferencing in code."
+  },
+  {
+    "pattern": "TLS handshake failed",
+    "solution": "Verify SSL cert validity, ensure clocks are synced, and check client-server cipher compatibility."
+  },
+  {
+    "pattern": "failed to bind socket",
+    "solution": "Ensure the port is free using `lsof -i :PORT`. If not, kill the conflicting process or use another port."
+  },
+  {
+    "pattern": "dns lookup failed",
+    "solution": "Check `/etc/resolv.conf` or DNS settings. Test with `dig` or `nslookup` to verify domain resolution."
+  },
+  {
+    "pattern": "too many open files",
+    "solution": "Increase `ulimit -n` value. Modify limits in `/etc/security/limits.conf`. Check for FD leaks in long-running processes."
+  }
+]

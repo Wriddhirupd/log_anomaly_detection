@@ -423,7 +423,7 @@ description = "Cross-platform colored terminal text."
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 groups = ["main"]
-markers = "sys_platform != \"emscripten\" and platform_system == \"Windows\""
+markers = "platform_system == \"Windows\""
 files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
@@ -463,6 +463,76 @@ typing-extensions = {version = ">=4.6.0", markers = "python_version < \"3.13\""}
 
 [package.extras]
 test = ["pytest (>=6)"]
+
+[[package]]
+name = "faiss-cpu"
+version = "1.11.0.post1"
+description = "A library for efficient similarity search and clustering of dense vectors."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-macosx_13_0_x86_64.whl", hash = "sha256:e079d44ea22919f6477fea553b05854c68838ab553e1c6b1237437a8becdf89d"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-macosx_14_0_arm64.whl", hash = "sha256:4ded0c91cb67f462ae00a4d339718ea2fbb23eedbf260c3a07de77c32c23205a"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:78812f4d7ff9d3773f50009efcf294f3da787cd8c835c1fc41d997a58100f7b5"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:76b133d746ddb3e6d39e6de62ff717cf4d45110d4af101a62d6a4fed4cd1d4d1"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:9443bc89447f9988f2288477584d2f1c59424a5e9f9a202e4ada8708df816db1"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:6acc20021b69bd30d3cb5cadb4f8dc1c338aec887cd5411b0982e8a3e48b3d7f"},
+    {file = "faiss_cpu-1.11.0.post1-cp310-cp310-win_amd64.whl", hash = "sha256:9dccf67d4087f9b0f937d4dccd1183929ebb6fe7622b75cba51b53e4f0055a0c"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-macosx_13_0_x86_64.whl", hash = "sha256:2c8c384e65cc1b118d2903d9f3a27cd35f6c45337696fc0437f71e05f732dbc0"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-macosx_14_0_arm64.whl", hash = "sha256:36af46945274ed14751b788673125a8a4900408e4837a92371b0cad5708619ea"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:1b15412b22a05865433aecfdebf7664b9565bd49b600d23a0a27c74a5526893e"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:81c169ea74213b2c055b8240befe7e9b42a1f3d97cda5238b3b401035ce1a18b"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:0794eb035c6075e931996cf2b2703fbb3f47c8c34bc2d727819ddc3e5e486a31"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:18d2221014813dc9a4236e47f9c4097a71273fbf17c3fe66243e724e2018a67a"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-win_amd64.whl", hash = "sha256:3ce8a8984a7dcc689fd192c69a476ecd0b2611c61f96fe0799ff432aa73ff79c"},
+    {file = "faiss_cpu-1.11.0.post1-cp311-cp311-win_arm64.whl", hash = "sha256:8384e05afb7c7968e93b81566759f862e744c0667b175086efb3d8b20949b39f"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-macosx_13_0_x86_64.whl", hash = "sha256:68f6ce2d9c510a5765af2f5711bd76c2c37bd598af747f3300224bdccf45378c"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-macosx_14_0_arm64.whl", hash = "sha256:b940c530a8236cc0b9fd9d6e87b3d70b9c6c216bc2baf2649356c908902e52c9"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:fafae1dcbcba3856a0bb82ffb0c3cae5922bdd6566fdd3b7feb2425cf4fca247"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5d1262702c19aba2d23144b73f4b5730ca988c1f4e43ecec87edf25171cafe3d"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:925feb69c06bfcc7f28869c99ab172f123e4b9d97a7e1353316fcc2748696f5b"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:00a837581b675f099c80c8c46908648dcf944a8992dd21e3887c61c6b110fe5f"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-win_amd64.whl", hash = "sha256:8bbaef5b56d1b0c01357ee6449d464ea4e52732fdb53a40bb5b9d77923af905f"},
+    {file = "faiss_cpu-1.11.0.post1-cp312-cp312-win_arm64.whl", hash = "sha256:57f85dbefe590f8399a95c07e839ee64373cfcc6db5dd35232a41137e3deefeb"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-macosx_13_0_x86_64.whl", hash = "sha256:caedaddfbfe365e3f1a57d5151cf94ea7b73c0e4789caf68eae05e0e10ca9fbf"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-macosx_14_0_arm64.whl", hash = "sha256:202d11f1d973224ca0bde13e7ee8b862b6de74287e626f9f8820b360e6253d12"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:f6086e25ef680301350d6db72db7315e3531582cf896a7ee3f26295b1da73c44"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:b93131842996efbbf76f07dba1775d3a5f355f74b9ba34334f1149aef046b37f"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:f26e3e93f537b2e1633212a1b0a7dab74d77825366ed575ca434dac2fa14cea6"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:7f4b0e03cd758d03012d88aa4a70e673d10b66f31f7c122adc0c8c323cad2e33"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-win_amd64.whl", hash = "sha256:bc53fe59b546dbab63144dc19dcee534ad7a213db617b37aa4d0e33c26f9bbaf"},
+    {file = "faiss_cpu-1.11.0.post1-cp313-cp313-win_arm64.whl", hash = "sha256:9cebb720cd57afdbe9dd7ed8a689c65dc5cf1bad475c5aa6fa0d0daea890beb6"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-macosx_13_0_x86_64.whl", hash = "sha256:3663059682589a42e3c4da0f3915492c466c886954cf9280273f92257bcfa0b4"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-macosx_14_0_arm64.whl", hash = "sha256:0348794ae91fb1454f2cddf7a9c7de23510f2a63e60c0fba0ae73bc7bf23a060"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:8baf46be73b4fce99f4620d99a52cdb01f7823a849f00064f02802f554d8b59f"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:388a590ab2847e421ba2702ff2774835287f137fb77e24e679f0063c1c10a96f"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-musllinux_1_2_aarch64.whl", hash = "sha256:dc12b3f89cf48be3f2a20b37f310c3f1a7a5708fdf705f88d639339a24bb590b"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:773fa45aa98a210ab4e2c17c1b5fb45f6d7e9acb4979c9a0b320b678984428ac"},
+    {file = "faiss_cpu-1.11.0.post1-cp39-cp39-win_amd64.whl", hash = "sha256:6240c4b1551eedc07e76813c2e14a1583a1db6c319a92a3934bf212d0e4c7791"},
+    {file = "faiss_cpu-1.11.0.post1.tar.gz", hash = "sha256:06b1ea9ddec9e4d9a41c8ef7478d493b08d770e9a89475056e963081eed757d1"},
+]
+
+[package.dependencies]
+numpy = ">=1.25.0,<3.0"
+packaging = "*"
+
+[[package]]
+name = "filelock"
+version = "3.18.0"
+description = "A platform independent file lock."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "filelock-3.18.0-py3-none-any.whl", hash = "sha256:c401f4f8377c4464e6db25fff06205fd89bdd83b65eb0488ed1b160f780e21de"},
+    {file = "filelock-3.18.0.tar.gz", hash = "sha256:adbc88eabb99d2fec8c9c1b229b171f18afa655400173ddc653d5d01501fb9f2"},
+]
+
+[package.extras]
+docs = ["furo (>=2024.8.6)", "sphinx (>=8.1.3)", "sphinx-autodoc-typehints (>=3)"]
+testing = ["covdefaults (>=2.3)", "coverage (>=7.6.10)", "diff-cover (>=9.2.1)", "pytest (>=8.3.4)", "pytest-asyncio (>=0.25.2)", "pytest-cov (>=6)", "pytest-mock (>=3.14)", "pytest-timeout (>=2.3.1)", "virtualenv (>=20.28.1)"]
+typing = ["typing-extensions (>=4.12.2) ; python_version < \"3.11\""]
 
 [[package]]
 name = "frozenlist"
@@ -579,6 +649,46 @@ files = [
 ]
 
 [[package]]
+name = "fsspec"
+version = "2025.7.0"
+description = "File-system specification"
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "fsspec-2025.7.0-py3-none-any.whl", hash = "sha256:8b012e39f63c7d5f10474de957f3ab793b47b45ae7d39f2fb735f8bbe25c0e21"},
+    {file = "fsspec-2025.7.0.tar.gz", hash = "sha256:786120687ffa54b8283d942929540d8bc5ccfa820deb555a2b5d0ed2b737bf58"},
+]
+
+[package.extras]
+abfs = ["adlfs"]
+adl = ["adlfs"]
+arrow = ["pyarrow (>=1)"]
+dask = ["dask", "distributed"]
+dev = ["pre-commit", "ruff (>=0.5)"]
+doc = ["numpydoc", "sphinx", "sphinx-design", "sphinx-rtd-theme", "yarl"]
+dropbox = ["dropbox", "dropboxdrivefs", "requests"]
+full = ["adlfs", "aiohttp (!=4.0.0a0,!=4.0.0a1)", "dask", "distributed", "dropbox", "dropboxdrivefs", "fusepy", "gcsfs", "libarchive-c", "ocifs", "panel", "paramiko", "pyarrow (>=1)", "pygit2", "requests", "s3fs", "smbprotocol", "tqdm"]
+fuse = ["fusepy"]
+gcs = ["gcsfs"]
+git = ["pygit2"]
+github = ["requests"]
+gs = ["gcsfs"]
+gui = ["panel"]
+hdfs = ["pyarrow (>=1)"]
+http = ["aiohttp (!=4.0.0a0,!=4.0.0a1)"]
+libarchive = ["libarchive-c"]
+oci = ["ocifs"]
+s3 = ["s3fs"]
+sftp = ["paramiko"]
+smb = ["smbprotocol"]
+ssh = ["paramiko"]
+test = ["aiohttp (!=4.0.0a0,!=4.0.0a1)", "numpy", "pytest", "pytest-asyncio (!=0.22.0)", "pytest-benchmark", "pytest-cov", "pytest-mock", "pytest-recording", "pytest-rerunfailures", "requests"]
+test-downstream = ["aiobotocore (>=2.5.4,<3.0.0)", "dask[dataframe,test]", "moto[server] (>4,<5)", "pytest-timeout", "xarray"]
+test-full = ["adlfs", "aiohttp (!=4.0.0a0,!=4.0.0a1)", "cloudpickle", "dask", "distributed", "dropbox", "dropboxdrivefs", "fastparquet", "fusepy", "gcsfs", "jinja2", "kerchunk", "libarchive-c", "lz4", "notebook", "numpy", "ocifs", "pandas", "panel", "paramiko", "pyarrow", "pyarrow (>=1)", "pyftpdlib", "pygit2", "pytest", "pytest-asyncio (!=0.22.0)", "pytest-benchmark", "pytest-cov", "pytest-mock", "pytest-recording", "pytest-rerunfailures", "python-snappy", "requests", "smbprotocol", "tqdm", "urllib3", "zarr", "zstandard ; python_version < \"3.14\""]
+tqdm = ["tqdm"]
+
+[[package]]
 name = "greenlet"
 version = "3.2.3"
 description = "Lightweight in-process concurrent programming"
@@ -660,6 +770,28 @@ files = [
 ]
 
 [[package]]
+name = "hf-xet"
+version = "1.1.5"
+description = "Fast transfer of large files with the Hugging Face Hub."
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+markers = "platform_machine == \"x86_64\" or platform_machine == \"amd64\" or platform_machine == \"arm64\" or platform_machine == \"aarch64\""
+files = [
+    {file = "hf_xet-1.1.5-cp37-abi3-macosx_10_12_x86_64.whl", hash = "sha256:f52c2fa3635b8c37c7764d8796dfa72706cc4eded19d638331161e82b0792e23"},
+    {file = "hf_xet-1.1.5-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:9fa6e3ee5d61912c4a113e0708eaaef987047616465ac7aa30f7121a48fc1af8"},
+    {file = "hf_xet-1.1.5-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fc874b5c843e642f45fd85cda1ce599e123308ad2901ead23d3510a47ff506d1"},
+    {file = "hf_xet-1.1.5-cp37-abi3-manylinux_2_28_aarch64.whl", hash = "sha256:dbba1660e5d810bd0ea77c511a99e9242d920790d0e63c0e4673ed36c4022d18"},
+    {file = "hf_xet-1.1.5-cp37-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:ab34c4c3104133c495785d5d8bba3b1efc99de52c02e759cf711a91fd39d3a14"},
+    {file = "hf_xet-1.1.5-cp37-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:83088ecea236d5113de478acb2339f92c95b4fb0462acaa30621fac02f5a534a"},
+    {file = "hf_xet-1.1.5-cp37-abi3-win_amd64.whl", hash = "sha256:73e167d9807d166596b4b2f0b585c6d5bd84a26dea32843665a8b58f6edba245"},
+    {file = "hf_xet-1.1.5.tar.gz", hash = "sha256:69ebbcfd9ec44fdc2af73441619eeb06b94ee34511bbcf57cd423820090f5694"},
+]
+
+[package.extras]
+tests = ["pytest"]
+
+[[package]]
 name = "httpcore"
 version = "1.0.9"
 description = "A minimal low-level HTTP client."
@@ -717,6 +849,45 @@ files = [
     {file = "httpx_sse-0.4.1-py3-none-any.whl", hash = "sha256:cba42174344c3a5b06f255ce65b350880f962d99ead85e776f23c6618a377a37"},
     {file = "httpx_sse-0.4.1.tar.gz", hash = "sha256:8f44d34414bc7b21bf3602713005c5df4917884f76072479b21f68befa4ea26e"},
 ]
+
+[[package]]
+name = "huggingface-hub"
+version = "0.34.0"
+description = "Client library to download and publish models, datasets and other repos on the huggingface.co hub"
+optional = false
+python-versions = ">=3.8.0"
+groups = ["main"]
+files = [
+    {file = "huggingface_hub-0.34.0-py3-none-any.whl", hash = "sha256:29737225f21dcc5c6b41bc9ab1073e65f9a2f84ecf9ad0a0c2fb92ae8cee173f"},
+    {file = "huggingface_hub-0.34.0.tar.gz", hash = "sha256:2c6f373fac66b1afc2fe47efd8e603a876935dbd669f966231f265da5c353e25"},
+]
+
+[package.dependencies]
+filelock = "*"
+fsspec = ">=2023.5.0"
+hf-xet = {version = ">=1.1.3,<2.0.0", markers = "platform_machine == \"x86_64\" or platform_machine == \"amd64\" or platform_machine == \"arm64\" or platform_machine == \"aarch64\""}
+packaging = ">=20.9"
+pyyaml = ">=5.1"
+requests = "*"
+tqdm = ">=4.42.1"
+typing-extensions = ">=3.7.4.3"
+
+[package.extras]
+all = ["InquirerPy (==0.3.4)", "Jinja2", "Pillow", "aiohttp", "authlib (>=1.3.2)", "fastapi", "gradio (>=4.0.0)", "httpx", "itsdangerous", "jedi", "libcst (>=1.4.0)", "mypy (==1.15.0) ; python_version >= \"3.9\"", "mypy (>=1.14.1,<1.15.0) ; python_version == \"3.8\"", "numpy", "pytest (>=8.1.1,<8.2.2)", "pytest-asyncio", "pytest-cov", "pytest-env", "pytest-mock", "pytest-rerunfailures", "pytest-vcr", "pytest-xdist", "ruff (>=0.9.0)", "soundfile", "types-PyYAML", "types-requests", "types-simplejson", "types-toml", "types-tqdm", "types-urllib3", "typing-extensions (>=4.8.0)", "urllib3 (<2.0)"]
+cli = ["InquirerPy (==0.3.4)"]
+dev = ["InquirerPy (==0.3.4)", "Jinja2", "Pillow", "aiohttp", "authlib (>=1.3.2)", "fastapi", "gradio (>=4.0.0)", "httpx", "itsdangerous", "jedi", "libcst (>=1.4.0)", "mypy (==1.15.0) ; python_version >= \"3.9\"", "mypy (>=1.14.1,<1.15.0) ; python_version == \"3.8\"", "numpy", "pytest (>=8.1.1,<8.2.2)", "pytest-asyncio", "pytest-cov", "pytest-env", "pytest-mock", "pytest-rerunfailures", "pytest-vcr", "pytest-xdist", "ruff (>=0.9.0)", "soundfile", "types-PyYAML", "types-requests", "types-simplejson", "types-toml", "types-tqdm", "types-urllib3", "typing-extensions (>=4.8.0)", "urllib3 (<2.0)"]
+fastai = ["fastai (>=2.4)", "fastcore (>=1.3.27)", "toml"]
+hf-transfer = ["hf-transfer (>=0.1.4)"]
+hf-xet = ["hf-xet (>=1.1.2,<2.0.0)"]
+inference = ["aiohttp"]
+mcp = ["aiohttp", "mcp (>=1.8.0)", "typer"]
+oauth = ["authlib (>=1.3.2)", "fastapi", "httpx", "itsdangerous"]
+quality = ["libcst (>=1.4.0)", "mypy (==1.15.0) ; python_version >= \"3.9\"", "mypy (>=1.14.1,<1.15.0) ; python_version == \"3.8\"", "ruff (>=0.9.0)"]
+tensorflow = ["graphviz", "pydot", "tensorflow"]
+tensorflow-testing = ["keras (<3.0)", "tensorflow"]
+testing = ["InquirerPy (==0.3.4)", "Jinja2", "Pillow", "aiohttp", "authlib (>=1.3.2)", "fastapi", "gradio (>=4.0.0)", "httpx", "itsdangerous", "jedi", "numpy", "pytest (>=8.1.1,<8.2.2)", "pytest-asyncio", "pytest-cov", "pytest-env", "pytest-mock", "pytest-rerunfailures", "pytest-vcr", "pytest-xdist", "soundfile", "urllib3 (<2.0)"]
+torch = ["safetensors[torch]", "torch"]
+typing = ["types-PyYAML", "types-requests", "types-simplejson", "types-toml", "types-tqdm", "types-urllib3", "typing-extensions (>=4.8.0)"]
 
 [[package]]
 name = "idna"
@@ -887,6 +1058,26 @@ pydantic = ">=2.7.4"
 PyYAML = ">=5.3"
 tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<10.0.0"
 typing-extensions = ">=4.7"
+
+[[package]]
+name = "langchain-huggingface"
+version = "0.3.1"
+description = "An integration package connecting Hugging Face and LangChain."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "langchain_huggingface-0.3.1-py3-none-any.whl", hash = "sha256:de10a692dc812885696fbaab607d28ac86b833b0f305bccd5d82d60336b07b7d"},
+    {file = "langchain_huggingface-0.3.1.tar.gz", hash = "sha256:0a145534ce65b5a723c8562c456100a92513bbbf212e6d8c93fdbae174b41341"},
+]
+
+[package.dependencies]
+huggingface-hub = ">=0.33.4"
+langchain-core = ">=0.3.70,<1.0.0"
+tokenizers = ">=0.19.1"
+
+[package.extras]
+full = ["sentence-transformers (>=2.6.0)", "transformers (>=4.39.0)"]
 
 [[package]]
 name = "langchain-mcp-adapters"
@@ -2266,6 +2457,61 @@ doc = ["reno", "sphinx"]
 test = ["pytest", "tornado (>=4.5)", "typeguard"]
 
 [[package]]
+name = "tokenizers"
+version = "0.21.2"
+description = ""
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "tokenizers-0.21.2-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:342b5dfb75009f2255ab8dec0041287260fed5ce00c323eb6bab639066fef8ec"},
+    {file = "tokenizers-0.21.2-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:126df3205d6f3a93fea80c7a8a266a78c1bd8dd2fe043386bafdd7736a23e45f"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:4a32cd81be21168bd0d6a0f0962d60177c447a1aa1b1e48fa6ec9fc728ee0b12"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:8bd8999538c405133c2ab999b83b17c08b7fc1b48c1ada2469964605a709ef91"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:5e9944e61239b083a41cf8fc42802f855e1dca0f499196df37a8ce219abac6eb"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:514cd43045c5d546f01142ff9c79a96ea69e4b5cda09e3027708cb2e6d5762ab"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:b1b9405822527ec1e0f7d8d2fdb287a5730c3a6518189c968254a8441b21faae"},
+    {file = "tokenizers-0.21.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fed9a4d51c395103ad24f8e7eb976811c57fbec2af9f133df471afcd922e5020"},
+    {file = "tokenizers-0.21.2-cp39-abi3-musllinux_1_2_aarch64.whl", hash = "sha256:2c41862df3d873665ec78b6be36fcc30a26e3d4902e9dd8608ed61d49a48bc19"},
+    {file = "tokenizers-0.21.2-cp39-abi3-musllinux_1_2_armv7l.whl", hash = "sha256:ed21dc7e624e4220e21758b2e62893be7101453525e3d23264081c9ef9a6d00d"},
+    {file = "tokenizers-0.21.2-cp39-abi3-musllinux_1_2_i686.whl", hash = "sha256:0e73770507e65a0e0e2a1affd6b03c36e3bc4377bd10c9ccf51a82c77c0fe365"},
+    {file = "tokenizers-0.21.2-cp39-abi3-musllinux_1_2_x86_64.whl", hash = "sha256:106746e8aa9014a12109e58d540ad5465b4c183768ea96c03cbc24c44d329958"},
+    {file = "tokenizers-0.21.2-cp39-abi3-win32.whl", hash = "sha256:cabda5a6d15d620b6dfe711e1af52205266d05b379ea85a8a301b3593c60e962"},
+    {file = "tokenizers-0.21.2-cp39-abi3-win_amd64.whl", hash = "sha256:58747bb898acdb1007f37a7bbe614346e98dc28708ffb66a3fd50ce169ac6c98"},
+    {file = "tokenizers-0.21.2.tar.gz", hash = "sha256:fdc7cffde3e2113ba0e6cc7318c40e3438a4d74bbc62bf04bcc63bdfb082ac77"},
+]
+
+[package.dependencies]
+huggingface-hub = ">=0.16.4,<1.0"
+
+[package.extras]
+dev = ["tokenizers[testing]"]
+docs = ["setuptools-rust", "sphinx", "sphinx-rtd-theme"]
+testing = ["black (==22.3)", "datasets", "numpy", "pytest", "requests", "ruff"]
+
+[[package]]
+name = "tqdm"
+version = "4.67.1"
+description = "Fast, Extensible Progress Meter"
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "tqdm-4.67.1-py3-none-any.whl", hash = "sha256:26445eca388f82e72884e0d580d5464cd801a3ea01e63e5601bdff9ba6a48de2"},
+    {file = "tqdm-4.67.1.tar.gz", hash = "sha256:f8aef9c52c08c13a65f30ea34f4e5aac3fd1a34959879d7e59e63027286627f2"},
+]
+
+[package.dependencies]
+colorama = {version = "*", markers = "platform_system == \"Windows\""}
+
+[package.extras]
+dev = ["nbval", "pytest (>=6)", "pytest-asyncio (>=0.24)", "pytest-cov", "pytest-timeout"]
+discord = ["requests"]
+notebook = ["ipywidgets (>=6)"]
+slack = ["slack-sdk"]
+telegram = ["requests"]
+
+[[package]]
 name = "typing-extensions"
 version = "4.14.1"
 description = "Backported and Experimental Type Hints for Python 3.9+"
@@ -2715,4 +2961,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "ee119aa640783be783c314a1dcea18d33c00e70787e5bbb569dadaf54b895ee2"
+content-hash = "08fc7f9f15627fc2a4483fcb8cd7a5b89c73c8d9416b285a8c5747314c905059"

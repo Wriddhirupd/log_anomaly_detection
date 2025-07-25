@@ -6,6 +6,7 @@ from langchain_mcp_adapters.tools import load_mcp_tools
 from langgraph.constants import END
 from langgraph.graph import StateGraph
 from langgraph.prebuilt import ToolNode, tools_condition
+from IPython.display import Image, display
 
 from app.agents.stream_watcher import fetch_log_from_stream
 from agents.preprocessor import normalize_log
@@ -18,9 +19,7 @@ import time
 from typing import TypedDict, Tuple
 from mcp import StdioServerParameters, stdio_client, ClientSession
 
-class State(TypedDict):
-    log: dict | None
-    AnomalyDetector: Tuple[bool, str]  # (is_anomaly, explanation)
+from app.models import State
 
 print("Current working directory:", os.getcwd())
 
@@ -40,37 +39,45 @@ async def create_llm(session):
 
     return llm_with_tool, tools
 
-async def build_graph(session):
+# Debugging state transitions
+def debug_state_transition(state):
+    print("Current state:", state)
+    return state
 
+async def build_graph(session):
     builder = StateGraph(State)
 
-    # llm, tools = await create_llm(session)  # Replace None with actual session if needed
-
+    # Initialize the LLM
     llm = ChatOllama(model="llama3.2:latest")
 
+    # Load tools
     tools = await load_mcp_tools(session)
-    # llm = llm.bind_tools(tools)
+    print("Available tools:", [tool.name for tool in tools])
+
+    # Manually integrate tools
+    async def call_llm_with_tool(state: State) -> Tuple[State, str]:
+        print("[ToolNode] Calling LLM with state:", state)
+        tool_output = await tools[0].ainvoke(state)  # Use asynchronous invocation
+        response = await llm.ainvoke([tool_output])  # Pass tool output to LLM asynchronously
+        print("[ToolNode] LLM response:", response)
+        return state, response.content
 
     builder.add_node("StreamWatcher", fetch_log_from_stream)
     builder.add_node("Preprocessor", normalize_log)
-    builder.add_node("tool_node", ToolNode(tools=tools))
-    builder.add_node("AnomalyDetector", detect_anomaly)
+    builder.add_node("call_model", call_llm_with_tool)
     builder.add_node("AlertAgent", alert)
     builder.add_node("LogSink", sink_log)
 
     builder.set_entry_point("StreamWatcher")
     builder.add_edge("StreamWatcher", "Preprocessor")
-    builder.add_edge("Preprocessor", "AnomalyDetector")
-
-    # Conditional routing based on anomaly detection
-    def route(result):
-        is_anomaly, _ = result
-        return "AlertAgent" if is_anomaly else "LogSink"
-
-    builder.add_conditional_edges("AnomalyDetector", tools_condition, {"tools": "tool_node", "__end__": "AnomalyDetector"})
-    builder.add_conditional_edges("AnomalyDetector", route, ["AlertAgent", "LogSink"])
+    builder.add_edge("Preprocessor", "call_model")
+    builder.add_edge("call_model", "AlertAgent")
+    builder.add_edge("call_model", "LogSink")
 
     graph = builder.compile()
+
+    with open("mermaid_graph.png", "wb") as f:
+        f.write(graph.get_graph().draw_mermaid_png())
 
     return graph
 
@@ -85,7 +92,8 @@ async def main():
 
             # Start the graph
             while True:
-                graph.invoke({}, config=config)
+                response = await graph.ainvoke({}, config=config)
+                print("AI: "+response["messages"][-1].content)
                 time.sleep(0.1)
 
 
