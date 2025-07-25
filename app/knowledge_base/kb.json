@@ -58,5 +58,21 @@
   {
     "pattern": "too many open files",
     "solution": "Increase `ulimit -n` value. Modify limits in `/etc/security/limits.conf`. Check for FD leaks in long-running processes."
-  }
+  },
+    {
+        "pattern": "permission denied",
+        "solution": "Check file/directory permissions and ownership. Use `chmod` or `chown` to adjust as necessary."
+    },
+    {
+        "pattern": "service not found",
+        "solution": "Ensure the service is installed and running. Check service status with `systemctl status SERVICE_NAME`."
+    },
+    {
+        "pattern": "database connection error",
+        "solution": "Verify database server is running, check connection strings, and ensure user credentials are correct."
+    },
+    {
+        "pattern": "memory leak detected",
+        "solution": "Use tools like `valgrind` or `memcheck` to identify leaks. Review code for proper memory management."
+    }
 ]
