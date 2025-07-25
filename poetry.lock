@@ -889,6 +889,23 @@ tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<10.0.0"
 typing-extensions = ">=4.7"
 
 [[package]]
+name = "langchain-mcp-adapters"
+version = "0.1.9"
+description = "Make Anthropic Model Context Protocol (MCP) tools compatible with LangChain and LangGraph agents."
+optional = false
+python-versions = ">=3.10"
+groups = ["main"]
+files = [
+    {file = "langchain_mcp_adapters-0.1.9-py3-none-any.whl", hash = "sha256:fd131009c60c9e5a864f96576bbe757fc1809abd604891cb2e5d6e8aebd6975c"},
+    {file = "langchain_mcp_adapters-0.1.9.tar.gz", hash = "sha256:0018cf7b5f7bc4c044e05ec20fcb9ebe345311c8d1060c61d411188001ab3aab"},
+]
+
+[package.dependencies]
+langchain-core = ">=0.3.36,<0.4"
+mcp = ">=1.9.2"
+typing-extensions = ">=4.14.0"
+
+[[package]]
 name = "langchain-text-splitters"
 version = "0.3.9"
 description = "LangChain text splitting utilities"
@@ -2698,4 +2715,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10,<4.0"
-content-hash = "cf17016a3edb5110406244042381b2cbcff79de5c7691dd6d7d64e8f35f2be1b"
+content-hash = "ee119aa640783be783c314a1dcea18d33c00e70787e5bbb569dadaf54b895ee2"
