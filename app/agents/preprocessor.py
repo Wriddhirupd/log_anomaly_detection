@@ -1,6 +1,5 @@
 from app.models import State
 
-
 def normalize_log(state: State):
     print("[Preprocessor] Normalizing log entry...")
     log = state.get("log")

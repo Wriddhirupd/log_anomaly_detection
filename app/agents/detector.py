@@ -3,7 +3,7 @@ import json
 from langchain_core.messages import HumanMessage
 from langchain_community.chat_models import ChatOllama
 
-# llm = ChatOllama(model="llama3.1:latest")
+llm = ChatOllama(model="llama3.2:latest")
 
 PROMPT_TEMPLATE = """
 You are an expert log analyzer. Given a log line, determine if it represents an anomaly and call search_solution to find solutions from knowledge base.
@@ -75,16 +75,14 @@ def detect_anomaly(state):
 
     print("[AnomalyDetector] Sending to LLaMA:", log_line)
 
-    return prompt
+    response = llm.invoke([HumanMessage(content=prompt)])
 
-    # response = llm.invoke([HumanMessage(content=prompt)])
-    #
-    # try:
-    #     content = response.content.strip()
-    #     content = content.replace("true", "true").replace("false", "false")
-    #     result = json.loads(content)  # okay only for trusted, local LLM
-    #     return {"AnomalyDetector": (result.get("anomaly", False), result.get("explanation", "No explanation"))}
-    # except Exception as e:
-    #     print("[AnomalyDetector] Failed to parse response:", response.content)
-    #     return {"AnomalyDetector": (False, f"Error parsing model response: {str(e)}")}
+    try:
+        content = response.content.strip()
+        content = content.replace("true", "true").replace("false", "false")
+        result = json.loads(content)
+        return {"AnomalyDetector": (result.get("anomaly", False), result.get("explanation", "No explanation"))}
+    except Exception as e:
+        print("[AnomalyDetector] Failed to parse response:", response.content)
+        return {"AnomalyDetector": (False, f"Error parsing model response: {str(e)}")}
 

@@ -4,9 +4,6 @@ import os
 redis_host = os.environ.get("REDIS_HOST", "localhost")
 r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 
-# Fetch a single log entry from the Redis stream
-# Returns the raw log dictionary or None if empty
-
 def fetch_log_from_stream(state):
     print("[StreamWatcher] Fetching log from Redis stream...")
     log = state.get("log")

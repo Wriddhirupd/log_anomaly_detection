@@ -5,17 +5,11 @@ import os
 from langchain_core.messages import BaseMessage
 from mcp.server.fastmcp import FastMCP
 
-from app.agents.detector import detect_anomaly
-
 mcp = FastMCP("Log Anomaly Detection")
 
 redis_host = os.environ.get("REDIS_HOST", "localhost")
 r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 
-# Fetch a single log entry from the Redis stream
-# Returns the raw log dictionary or None if empty
-
-# @mcp.tool()
 def fetch_log_from_redis_stream():
     """
     Fetches a single log entry from the Redis stream.

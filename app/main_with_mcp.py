@@ -1,14 +1,11 @@
 import json
 import os
-import time
-from typing import Any, TypedDict
+from typing import Any
+import asyncio
 
-from langchain.chains.retrieval_qa.base import RetrievalQA
-from langchain_core.callbacks import StdOutCallbackHandler
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from langchain_ollama import ChatOllama
 from langchain_mcp_adapters.tools import load_mcp_tools
-from langgraph.graph import StateGraph
 from langgraph.prebuilt import create_react_agent
 from langgraph.prebuilt.chat_agent_executor import AgentState
 from mcp import stdio_client, StdioServerParameters, ClientSession
@@ -16,8 +13,6 @@ from mcp import stdio_client, StdioServerParameters, ClientSession
 from app.agents.detector import PROMPT_TEMPLATE, PROMPT
 from app.knowledge_base.json_to_kb import load_faiss_store
 from app.mcp_setup.anomaly_server import fetch_log_from_redis_stream
-
-# from app.models import State
 
 print("Starting MCP client...")
 server_params = StdioServerParameters(
@@ -37,8 +32,6 @@ client = MultiServerMCPClient(
             "command": "python",
             "args": [os.path.join(os.getcwd(), "app", "mcp_setup", "rag_server.py")],
             "transport": "stdio",
-            # "url": "http://localhost:8000/mcp",
-            # "transport": "streamable_http",
         }
     }
 )
@@ -73,11 +66,8 @@ async def multiserver_main():
 
 
 async def run_agent(agent, tools, config):
-        # Run the agent
-        print("Starting agent...")
         log = fetch_log_from_redis_stream()
-        log = log["log"]  # Extract the log from the dictionary
-        # Preprocess log to match the required format
+        log = log["log"]
         if log is not None:
             input_message = {
                 "messages": [
@@ -200,8 +190,6 @@ async def main():
                     print("[AlertAgent] ALERT TRIGGERED:", alert)
 
 if __name__ == "__main__":
-    import asyncio
-
     async def loop_main():
         agent, tools = await multiserver_main()
         while True:
@@ -213,11 +201,3 @@ if __name__ == "__main__":
             await asyncio.sleep(1)
 
     asyncio.run(loop_main())
-
-
-# if __name__ == "__main__":
-#     import asyncio
-#     while True:
-#         asyncio.run(multiserver_main())
-#         time.sleep(0.1)
-#         # print("MCP client started successfully.")
