@@ -198,5 +198,7 @@ if __name__ == "__main__":
                 config={"configurable": {"thread_id": 1234}, "recursion_limit": 100}
             )
             await asyncio.sleep(1)
+            print("\n=================================\nWaiting for new log entry...\n")
 
     asyncio.run(loop_main())
+    print("\n=================================\n")

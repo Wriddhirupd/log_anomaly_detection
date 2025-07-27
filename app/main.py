@@ -40,3 +40,4 @@ if __name__ == "__main__":
     while True:
         graph.invoke({})
         time.sleep(0.1)
+        print("\n=================================\nWaiting for new log entry...\n")
