@@ -99,11 +99,8 @@ async def run_agent(agent, tools, config):
             content = output.strip()
             content = content.replace("true", "true").replace("false", "false")
             result = json.loads(content)  # okay only for trusted, local LLM
-            print("Anomaly detection result:", result)
 
             if result["anomaly"]:
-                print(f"Anomaly detected: {result['explanation']}")
-
                 alert = {
                     "source": log.get("source"),
                     "level": log.get("level"),
@@ -172,8 +169,7 @@ async def main():
             if 'anomaly": ' in output.lower():
                 content = output.strip()
                 content = content.replace("true", "True").replace("false", "false")
-                result = json.loads(content)  # okay only for trusted, local LLM
-                print("Anomaly detection result:", result)
+                result = json.loads(content)
 
                 if result["anomaly"]:
                     print(f"Anomaly detected: {result['explanation']}")
