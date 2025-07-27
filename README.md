@@ -95,7 +95,7 @@ Run Redis as a Docker container:
             6) "Database connection failed"
             7) "timestamp"
             8) "2025-07-27 13:59:06"
-```
+  ```
 ----
 
 ## Authors
