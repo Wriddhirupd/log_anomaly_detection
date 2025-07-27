@@ -92,7 +92,6 @@ async def run_agent(agent, tools, config):
             input=input_message,
             config=config,
         )
-        print("Agent response:", response)
         output = response["messages"][-1].content
         print("AI: " + output)
 
