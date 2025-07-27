@@ -1,22 +1,29 @@
-#FROM python:3.13-slim
-#FROM alpine:3.20
-FROM python:3.13-alpine
-RUN echo $(ls -al)
+FROM python:3.10-slim
 
+ENV POETRY_VERSION=2.1.3
+ENV PATH="/root/.local/bin:$PATH"
+
+# System deps
+RUN apt-get update && apt-get install -y \
+    curl build-essential git \
+    && apt-get clean
+
+# Install poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Set workdir
 WORKDIR /src
 
+# Copy files
 COPY ./app ./app
-COPY ./pyproject.toml ./poetry.lock ./
-COPY ./README.md ./README.md
+COPY ./tools ./tools
+COPY pyproject.toml poetry.lock ./
+COPY README.md .
 
-RUN echo $(ls -al)
-
-RUN pip install poetry==2.1.3
-
+# Install dependencies
 RUN poetry install
 
-RUN cd app/
+RUN poetry run python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
 
-RUN echo $(ls -al)
-
-#CMD ["poetry", "run", "python", "main.py"]
+# Run
+CMD ["poetry", "run", "python", "app/main.py"]
