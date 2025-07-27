@@ -24,75 +24,79 @@ Real-time Log Anomaly Detector with Redis Streams + LangGraph (Monitor logs push
 ## Architecture
 
 1. As a Langchain Graph Agent, it monitors Redis Streams for new log entries.
+
+
    ![log_anomaly_detection_archs1.png](log_anomaly_detection_archs1.png)
 
 2. As a Langchain ReAct Agent, it communicates with MCP Servers and triggers alerts.
-    ![log_anomaly_detection_archs2.png](log_anomaly_detection_archs2.png)
+
+
+  ![log_anomaly_detection_archs2.png](log_anomaly_detection_archs2.png)
+
+----
 
 ### Installing
 
 Install add dependencies by running the command below:
-```commandline
-poetry install
-```
+  ```commandline
+  poetry install
+  ```
 
 Run Redis as a Docker container:
-```commandline
-docker run -d --name redis -p 6379:6379 redis:latest
-```
-
+  ```commandline
+  docker run -d --name redis -p 6379:6379 redis:latest
+  ```
+---
 ### Executing program
 
 * Install [MiniLM-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2) Embedding Model in the project directory:
-```
-poetry run python app/knowledge_base/load_model.py
-```
+  ```
+  poetry run python app/knowledge_base/load_model.py
+  ```
 
 * Start the agent without MCP:
-```commandline
-poetry run python app/main.py
-```
+  ```commandline
+  poetry run python app/main.py
+  ```
 
 * Start the agent with MCP:
-```commandline
-poetry run python app/main_with_mcp.py
-```
+  ```commandline
+  poetry run python app/main_with_mcp.py
+  ```
 
 * Once, the servers are started and its polling Redis Streams with no logs, run the command below to push logs to Redis Streams:
-```commandline
-poetry run python tools/push_logs.py
-```
+  ```commandline
+  poetry run python tools/push_logs.py
+  ```
 
 * Viewing the logs in Redis Streams:
 
-```commandline
-# redis-cli
-127.0.0.1:6379> XREAD STREAMS logs:incoming 0
-```
+  ```commandline
+    redis-cli
+    127.0.0.1:6379> XREAD STREAMS logs:incoming 0
+  ```
   Response:
-```commandline
-452) 1) "1753604945428-0"
-     2) 1) "source"
-        2) "web"
-        3) "level"
-        4) "error"
-        5) "message"
-        6) "Unauthorized access attempt"
-        7) "timestamp"
-        8) "2025-07-27 13:59:05"
-453) 1) "1753604946433-0"
-     2) 1) "source"
-        2) "web"
-        3) "level"
-        4) "error"
-        5) "message"
-        6) "Database connection failed"
-        7) "timestamp"
-        8) "2025-07-27 13:59:06"
+  ```commandline
+    452) 1) "1753604945428-0"
+         2) 1) "source"
+            2) "web"
+            3) "level"
+            4) "error"
+            5) "message"
+            6) "Unauthorized access attempt"
+            7) "timestamp"
+            8) "2025-07-27 13:59:05"
+    453) 1) "1753604946433-0"
+         2) 1) "source"
+            2) "web"
+            3) "level"
+            4) "error"
+            5) "message"
+            6) "Database connection failed"
+            7) "timestamp"
+            8) "2025-07-27 13:59:06"
 ```
-
-
-
+----
 
 ## Authors
 
