@@ -15,12 +15,6 @@ from app.knowledge_base.json_to_kb import load_faiss_store
 from app.mcp_setup.anomaly_server import fetch_log_from_redis_stream
 
 print("Starting MCP client...")
-server_params = StdioServerParameters(
-    command="python",
-    args=[os.path.join(os.getcwd(), "app", "mcp_setup", "anomaly_server.py")],
-    env=None,
-)
-
 client = MultiServerMCPClient(
     {
         "anomaly": {
@@ -110,79 +104,6 @@ async def run_agent(agent, tools, config):
                 }
 
                 print("ALERT TRIGGERED:", alert)
-
-async def main():
-    config = {"configurable": {"thread_id": 1234}}
-    async with stdio_client(server_params) as (read, write):
-        async with ClientSession(read, write) as session:
-            await session.initialize()
-
-            # List available tools
-            tools = await load_mcp_tools(session)
-            print("\n/////////////////tools//////////////////")
-            for tool in tools:
-                print(tool.name)
-
-            # Create LLM with tools
-            llm = ChatOllama(model="llama3.2:latest")
-
-
-
-            agent = create_react_agent(
-                model=llm,
-                tools=tools,
-                state_schema=State,
-            )
-
-            # Run the agent
-            print("Starting agent...")
-            log = fetch_log_from_redis_stream()
-            log = log["log"]  # Extract the log from the dictionary
-            # Preprocess log to match the required format
-            if log is not None:
-                input_message = {
-                    "messages": [
-                        {
-                            "role": "system",
-                            "content":  PROMPT_TEMPLATE
-                        },
-                        {
-                            "role": "user",
-                            "content": f"Log entry: {log['message']} (Level: {log['level']}, Source: {log['source']}, Timestamp: {log['timestamp']})"
-                        }
-                    ]
-                }
-            else:
-                input_message = {"messages": [{"role": "user", "content": "No log available"}]}
-            print(f"Input to agent: {input_message}")
-
-            if input_message["messages"][0]["content"] == "No log available":
-                return
-
-            response = await agent.ainvoke(
-                input=input_message,
-                config=config,
-            )
-            output = response["messages"][-1].content
-            print("AI: "+output)
-
-            if 'anomaly": ' in output.lower():
-                content = output.strip()
-                content = content.replace("true", "True").replace("false", "false")
-                result = json.loads(content)
-
-                if result["anomaly"]:
-                    print(f"Anomaly detected: {result['explanation']}")
-
-                    alert = {
-                        "source": log.get("source"),
-                        "level": log.get("level"),
-                        "message": log.get("message"),
-                        "timestamp": log.get("timestamp"),
-                        "explanation": result['explanation']
-                    }
-
-                    print("[AlertAgent] ALERT TRIGGERED:", alert)
 
 if __name__ == "__main__":
     async def loop_main():
