@@ -15,4 +15,4 @@ services:
       - .:/src
     ports:
       - "8000:8000"  # Expose LangGraph visual UI
-    command: ["python", "main.py"]
+    #command: ["python", "main.py"]

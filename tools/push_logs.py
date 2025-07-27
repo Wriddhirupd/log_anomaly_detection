@@ -7,9 +7,9 @@ redis_host = os.environ.get("REDIS_HOST", "localhost")
 r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 
 sources = ["web", "db", "auth", "api"]
-levels = ["info", "warning", "error"]
+levels = [ "error"]
 messages = [
-    "User logged in",
+    # "User logged in",
     "Database connection failed",
     "Unauthorized access attempt",
     "Request timeout",
@@ -25,7 +25,7 @@ def generate_log():
         "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
     }
 
-for _ in range(10):
+for _ in range(20):
     log = generate_log()
     r.xadd("logs:incoming", log)
     print("[LogPusher] Inserted:", log)

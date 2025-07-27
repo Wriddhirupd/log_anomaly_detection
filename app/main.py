@@ -4,8 +4,6 @@ from agents.preprocessor import normalize_log
 from agents.detector import detect_anomaly
 from agents.alert import alert
 from agents.sink import sink_log
-# from langgraph.graph.runner import start_visual_server
-import threading
 import time
 from typing import TypedDict, Tuple
 
@@ -34,11 +32,11 @@ def route(result):
 builder.add_conditional_edges("AnomalyDetector", route, ["AlertAgent", "LogSink"])
 
 graph = builder.compile()
+mermaid_code = graph.get_graph().draw_mermaid_png()
+with open("mermaid_graph.png", "wb") as f:
+    f.write(graph.get_graph().draw_mermaid_png())
 
 if __name__ == "__main__":
-    # Start visual server in separate thread
-    # threading.Thread(target=start_visual_server, args=(graph,), daemon=True).start()
-
     while True:
         graph.invoke({})
         time.sleep(0.1)

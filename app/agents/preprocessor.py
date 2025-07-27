@@ -1,6 +1,7 @@
+from app.models import State
 
-
-def normalize_log(state):
+def normalize_log(state: State):
+    print("[Preprocessor] Normalizing log entry...")
     log = state.get("log")
     if not log:
         return {"log": None}
